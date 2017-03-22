@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
+    <script type="text/javascript">
+        var corpId = '<%=dd_config.corpId%>' ;
+        var timeStamp = '<%=dd_config.timeStamp%>' ;
+        var nonceStr = '<%=dd_config.nonceStr%>' ;
+        var signature = '<%=dd_config.signature%>' ;
+    </script>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+  </head>
+  <body>
+    <p>Welcome to <%= title %></p>
+    <button id="scan" onclick="scan()">scan</button>
+  </body>
+  <script type="text/javascript">
+  </script>
+</html>

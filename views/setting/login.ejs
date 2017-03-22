@@ -1,0 +1,12 @@
+<% layout("layout")%>
+<div class="am-panel am-panel-secondary am-margin-sm" ng-controller="LoginCtrl">
+    <div class="am-panel-hd">超人登录</div>
+    <div class="am-panel-bd">
+        <p><input type="text" class="am-form-field am-radius"ng-model="user.phone" placeholder="请输入手机号" /></p>
+        <p><input type="text" class="am-form-field am-radius" ng-model="user.password" placeholder="请输入密码" /></p>
+        <button type="button" class="am-btn am-btn-secondary am-btn-block" ng-click="login()">登陆</button>
+    </div>
+</div>
+
+<% block('footer').append('<script src="javascripts/setting.js"></script>') %>
+
