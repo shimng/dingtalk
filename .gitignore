@@ -18,6 +18,7 @@ cache/*.json
 public/dist/*
 npm-debug.log
 node_modules
+config.js
 
 Gt.ext
 gt.txt
