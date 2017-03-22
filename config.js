@@ -14,6 +14,7 @@ exports.redis = {
     auth:{}
 };
 exports.domain = "http://192.168.1.6:3000";
+
 var dev = (function(){
     if('linux' == process.platform){
         //在linux环境中运行
