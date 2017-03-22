@@ -1,18 +1,9 @@
 /**
  * Created by nico on 2017/3/11.
  */
-
-exports.ding = {
-    corpId:"dinge4fc6deea653c2ae",
-    secret:"NoCFqYgLrKLn-uusGEKSQ5_HRI4PdRZjTYVW45JuXrnhaCGEIFIYDoT8YX2yCcTu",
-    prefix:"ding_",
-    agentId:'82143702'
-};
-exports.redis = {
-    port:6379,
-    host :'192.168.1.218',
-    auth:{}
-};
+var key = require('./key');
+exports.ding = key.ding ;
+exports.redis = key.redis;
 exports.domain = "http://192.168.1.6:3000";
 
 var dev = (function(){
