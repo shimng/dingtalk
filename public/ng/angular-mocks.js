@@ -1001,16 +1001,16 @@ angular.mock.dump = function(object) {
  *
  *
  * # Unit testing with mock $httpBackend
- * The following code shows how to setup and use the mock backend when unit testing a controller.
- * First we create the controller under test:
+ * The following code shows how to setup and use the mock backend when unit testing a controllers.
+ * First we create the controllers under test:
  *
   ```js
   // The module code
   angular
     .module('MyApp', [])
-    .controller('MyController', MyController);
+    .controllers('MyController', MyController);
 
-  // The controller code
+  // The controllers code
   function MyController($scope, $http) {
     var authToken;
 
@@ -1035,7 +1035,7 @@ angular.mock.dump = function(object) {
  * Now we setup the mock backend and create the test specs:
  *
   ```js
-    // testing controller
+    // testing controllers
     describe('MyController', function() {
        var $httpBackend, $rootScope, createController, authRequestHandler;
 
@@ -1051,11 +1051,11 @@ angular.mock.dump = function(object) {
 
          // Get hold of a scope (i.e. the root scope)
          $rootScope = $injector.get('$rootScope');
-         // The $controller service is used to create instances of controllers
-         var $controller = $injector.get('$controller');
+         // The $controllers service is used to create instances of controllers
+         var $controllers = $injector.get('$controllers');
 
          createController = function() {
-           return $controller('MyController', {'$scope' : $rootScope });
+           return $controllers('MyController', {'$scope' : $rootScope });
          };
        }));
 
@@ -1068,7 +1068,7 @@ angular.mock.dump = function(object) {
 
        it('should fetch authentication token', function() {
          $httpBackend.expectGET('/auth.py');
-         var controller = createController();
+         var controllers = createController();
          $httpBackend.flush();
        });
 
@@ -1079,18 +1079,18 @@ angular.mock.dump = function(object) {
          authRequestHandler.respond(401, '');
 
          $httpBackend.expectGET('/auth.py');
-         var controller = createController();
+         var controllers = createController();
          $httpBackend.flush();
          expect($rootScope.status).toBe('Failed...');
        });
 
 
        it('should send msg to server', function() {
-         var controller = createController();
+         var controllers = createController();
          $httpBackend.flush();
 
          // now you don’t care about the authentication, but
-         // the controller will still send the request and
+         // the controllers will still send the request and
          // $httpBackend will respond without you having to
          // specify the expectation and response for this request
 
@@ -1103,7 +1103,7 @@ angular.mock.dump = function(object) {
 
 
        it('should send auth header', function() {
-         var controller = createController();
+         var controllers = createController();
          $httpBackend.flush();
 
          $httpBackend.expectPOST('/add-msg.py', undefined, function(headers) {

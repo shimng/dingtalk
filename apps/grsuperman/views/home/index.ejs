@@ -1,0 +1,28 @@
+<% layout("grsuperman_layout") %>
+
+<div class="am-panel am-panel-secondary am-margin-sm" ng-controller="HomeCtrl" ng-init="load('<%=dd_config.corpId%>','<%=dd_config.timeStamp%>','<%=dd_config.nonceStr%>','<%=dd_config.signature%>','<%=dd_config.agentId%>','<%= userInSession%>')">
+    <div class="am-panel-hd">水果件 {{user.name}}</div>
+    <div class="am-panel-bd">
+        <form name="myForm" ng-submit="search()">
+            <div class="am-form-group am-form-icon" style="margin-bottom: 0;">
+                <i class="am-icon-search " style="color: #a1a1a1;"></i>
+                <input type="number" class="am-form-field am-round" style="background-color: #fff;opacity: 0.9; width: 80%;" placeholder="输入至少6位订单号" name="search" ng-model="orderId">
+
+            </div>
+        </form>
+        <ul class="am-avg-sm-2">
+            <li class="am-padding-sm">
+                <button type="button" class="am-btn am-btn-danger am-radius am-btn-block" ng-click="scan('get')">扫码领单</button>
+            </li>
+            <li class="am-padding-sm">
+                <button type="button" class="am-btn am-btn-secondary am-radius am-btn-block" ng-click="scan('search')">扫码查单</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<script >
+
+</script>
+<% block('footer').append('<script src="js/home.js"></script>') %>
+<!---启用底部navbar-->
+<% include ../navbar.ejs %>

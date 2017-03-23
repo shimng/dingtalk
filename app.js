@@ -27,17 +27,18 @@ app.use(cookieParser());
 app.use(session({secret:'gr',name:'gr_superman',cookie:{maxAge:2000000},resave:false,saveUninitialized:false}));
 app.use(express.static(path.join(__dirname, 'public')));
 //检测所有调用所有链接时session中是否有值,必须放在app.use(express.static(path.join(__dirname, 'public')));后面，否则可能会报错
-app.use(function (req,res,next) {
-    var url = req.originalUrl ;
-    //排除ajax请求和登陆页面
-    if(url.indexOf("Ajax")<0 && url != "/login" && !req.session.user){
-        res.redirect('login');
-    }
-    next();
-});
+// app.use(function (req,res,next) {
+//     var url = req.originalUrl ;
+//     //排除ajax请求和登陆页面
+//     if(url.indexOf("Ajax")<0 && url != "/login" && !req.session.user){
+//         res.redirect('login');
+//     }
+//     next();
+// });
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/apps',require('./apps'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
