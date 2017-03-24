@@ -96,11 +96,25 @@ module.exports =  {
     },
     getOrderStatusByOid: function (req,res,next) {
         var orderId = req.query.orderId ;
-        console.log(orderId);
-        console.log(orderId);
-        console.log(orderId);
         commonModel.getOrderStatusByOid(orderId).then(function (result) {
             res.json(result);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getTaskHome:function (req, res, next) {
+        var user = req.session._user || {};
+        commonModel.getTaskHome(user.uid).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getWaitList:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getWaitList(user.uid).then(function (data) {
+            res.json(data);
         }).catch(function (err) {
             res.json(err);
         })

@@ -1,0 +1,91 @@
+<% layout("grsuperman_layout") %>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2" ng-controller="WaitCtrl" ng-init="load()">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]">定时达</a></li>
+        <li class=""><a href="[data-tab-panel-1]">免费达</a></li>
+        <li class=""><a href="[data-tab-panel-2]">其他</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <!--缩略图在标题下方居右-->
+                        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right"  ng-repeat="order in tasks.dsd track by $index | orderBy:'toStreet'">
+                            <h3 class="am-list-item-hd"  ng-bind="order.orderid"></h3>
+                            <div class=" am-u-sm-8 am-list-main">
+                                <div class="am-list-item-text">
+                                    <h6 class="am-margin-bottom-0" ng-bind="order.toStreet"></h6>
+                                    <span ng-bind="order.toName"></span>
+                                    <a href="tel:{{order.toPhone}}">{{order.toPhone}}</a>
+                                </div>
+                            </div>
+                            <div class="am-list-thumb am-u-sm-4">
+                                <div class="am-list-item-text" ng-show="order.deliveryTime">
+                                    <span class="am-list-date " >预约时间</span>
+                                    <h6 class="am-margin-0" ng-bind="order.deliveryTime *1000 | date:'MM-dd HH:mm'"></h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div data-tab-panel-1 class="am-tab-panel ">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <!--缩略图在标题下方居右-->
+                        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right"  ng-repeat="order in tasks.mfd track by $index | orderBy:'toStreet'">
+                            <h3 class="am-list-item-hd"  ng-bind="order.orderid"></h3>
+                            <div class=" am-u-sm-8 am-list-main">
+                                <div class="am-list-item-text">
+                                    <h6 class="am-margin-bottom-0" ng-bind="order.toStreet"></h6>
+                                    <span ng-bind="order.toName"></span>
+                                    <a href="tel:{{order.toPhone}}">{{order.toPhone}}</a>
+                                </div>
+                            </div>
+                            <div class="am-list-thumb am-u-sm-4">
+                                <div class="am-list-item-text" ng-show="order.deliveryTime">
+                                    <span class="am-list-date " >预约时间</span>
+                                    <h6 class="am-margin-0" ng-bind="order.deliveryTime *1000 | date:'MM-dd HH:mm'"></h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div data-tab-panel-2 class="am-tab-panel ">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                <div class="am-list-news-bd">
+                    <ul class="am-list">
+                        <!--缩略图在标题下方居右-->
+                        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right"  ng-repeat="order in tasks.other track by $index | orderBy:'toStreet'">
+                            <h3 class="am-list-item-hd"  ng-bind="order.orderid"></h3>
+                            <div class=" am-u-sm-8 am-list-main">
+                                <div class="am-list-item-text">
+                                    <h6 class="am-margin-bottom-0" ng-bind="order.toStreet"></h6>
+                                    <span ng-bind="order.toName"></span>
+                                    <a href="tel:{{order.toPhone}}">{{order.toPhone}}</a>
+                                </div>
+                            </div>
+                            <div class="am-list-thumb am-u-sm-4">
+                                <div class="am-list-item-text" ng-show="order.deliveryTime">
+                                    <span class="am-list-date " >预约时间</span>
+                                    <h6 class="am-margin-0" ng-bind="order.deliveryTime *1000 | date:'MM-dd HH:mm'"></h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<% block('footer').append('<script src="js/tasks.js"></script>') %>
+<% include ../navbar.ejs %>

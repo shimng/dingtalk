@@ -1,27 +1,61 @@
 <% layout("grsuperman_layout") %>
-
-<div class="am-panel am-panel-secondary am-margin-sm">
-    <div class="am-panel-hd"></div>
-    <div class="am-panel-bd">
-        <form name="myForm">
-            <div class="am-form-group am-form-icon" style="margin-bottom: 0;">
-                <i class="am-icon-search " style="color: #a1a1a1;"></i>
-                <input type="number" class="am-form-field am-round" style="background-color: #fff;opacity: 0.9; width: 80%;" placeholder="输入至少6位订单号" name="search">
-
-            </div>
-        </form>
-        <ul class="am-avg-sm-2">
-            <li class="am-padding-sm">
-                <button type="button" class="am-btn am-btn-danger am-radius am-btn-block">扫码领单</button>
-            </li>
-            <li class="am-padding-sm">
-                <button type="button" class="am-btn am-btn-secondary am-radius am-btn-block">扫码查单</button>
-            </li>
-        </ul>
+<div ng-controller="TasksCtrl" ng-init="load()">
+    <div class="am-panel am-panel-secondary am-margin-sm">
+        <div class="am-panel-hd">任务查询</div>
+        <div class="am-margin-0">
+            <ul class="am-list am-list-static am-list-border am-margin-bottom-0">
+                <li onclick="location='wait'">
+                    <i class="am-icon-fw am-icon-list-alt"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="wait.waittake"></span>
+                    待领取任务
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-folder-o"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="wait.sd"></span>
+                    三方订单
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-secondary am-margin-sm">
+        <div class="am-panel-hd">我的任务</div>
+        <div class="am-margin-0">
+            <ul class="am-list am-list-static am-list-border am-margin-bottom-0">
+                <li>
+                    <i class="am-icon-fw am-icon-send-o"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.inExpress"></span>
+                    派送中
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-reply-all"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.finishExpress"></span>
+                    退货
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-refresh"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.backGoods"></span>
+                    换货
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-check-circle-o"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.changeGoods"></span>
+                    已完成
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-clock-o"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.bookTime"></span>
+                    预约
+                </li>
+                <li>
+                    <i class="am-icon-fw am-icon-close"></i>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.reject"></span>
+                    拒收
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
-<script >
 
-</script>
+<% block('footer').append('<script src="js/tasks.js"></script>') %>
 <!---启用底部navbar-->
 <% include ../navbar.ejs %>

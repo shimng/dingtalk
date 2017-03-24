@@ -43,7 +43,31 @@ grApp.service('HomeService',['$q','$http',function ($q,$http) {
                 q.reject(data);
             });
             return q.promise;
-        }
+        },
+        taskHome1:function () {
+            var q = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+            $http({
+                method: 'GET',
+                url: '/apps/grsuperman/getTaskHomeAjax'
+            }).success(function (data, status, headers, config) {
+                q.resolve(data);
+            }).error(function (data, status, headers, config) {
+                q.reject(data);
+            });
+            return q.promise;
+        },
+        getWaitList:function () {
+            var q = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+            $http({
+                method: 'GET',
+                url: '/apps/grsuperman/getWaitListAjax'
+            }).success(function (data, status, headers, config) {
+                q.resolve(data);
+            }).error(function (data, status, headers, config) {
+                q.reject(data);
+            });
+            return q.promise;
+        },
     };
     return _service ;
 }])
