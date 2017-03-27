@@ -21,6 +21,7 @@ module.exports =  {
         }
         ding.getSignature(url).then(function(data){
             data['agentId'] = config.ding.agentId ;
+            console.log(data);
             res.render(_VIEW_PATH+'home', { title: '果然超人',dd_config:data,userInSession:userInSession});
         }).catch(function (err) {
             console.log(err)
@@ -114,6 +115,96 @@ module.exports =  {
         var user = req.session._user || {};
         console.log(user);
         commonModel.getWaitList(user.uid).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getInExpress:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getInExpress(user.uid).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    finishExpress:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.finishExpress({uid:user.uid,code:req.query.code}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    rejectExpress:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.rejectExpress({uid:user.uid,code:req.query.code,dialog:req.query.dialog}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    bookTime:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.bookTime({uid:user.uid,code:req.query.code,book_time:req.query.book_time}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getBackGoods:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getBackGoods({uid:user.uid}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getExchangeGoods:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getExchangeGoods({uid:user.uid}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getFinishedMission:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getFinishedMission({uid:user.uid}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getBookedMission:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getBookedMission({uid:user.uid}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    getRejectedMission:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.getRejectedMission({uid:user.uid}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    restartExpress:function (req, res, next) {
+        var user = req.session._user || {};
+        console.log(user);
+        commonModel.restartExpress({uid:user.uid,code:req.query.code}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);

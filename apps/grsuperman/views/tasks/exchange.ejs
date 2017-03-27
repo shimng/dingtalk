@@ -1,0 +1,31 @@
+<% layout("grsuperman_layout") %>
+<div ng-controller="ExchangeCtrl" ng-init="load()" >
+    <div class="am-panel am-panel-default am-margin-xs" ng-if="tasks.length === 0" >
+        <div class="am-panel-bd am-text-center">
+            <span class="am-text-danger">换货订单请入库完成</span>
+        </div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-xs" ng-if="tasks.length === 0" >
+        <div class="am-panel-bd am-text-center">
+            <span class="am-text-success">没有了...</span>
+        </div>
+    </div>
+    <div ng-show="tasks.length > 0" class="am-panel am-panel-secondary am-margin-sm" ng-repeat="task in tasks track by $index">
+        <div class="am-panel-hd" >
+            <span ng-bind="task.area_name"></span>
+            <span ng-bind="task.type | orderType"></span>
+            <span ng-bind="task.code"></span>
+            <a type="button" class="am-tbn am-btn-link am-fr" ng-click="bookTime(event,task.code,task,$index)">预约</a>
+        </div>
+        <div class="">
+            <div class="am-margin-sm">
+                <p class="am-margin-0">地址:<span ng-bind="task.to_address"></span></p>
+                <p class="am-margin-0">收件人:<span ng-bind="task.to_name"></span><a href="tel:{{task.to_tel}}" ng-bind="task.to_tel"></a> </p>
+                <p class="am-margin-0 am-text-xs " ng-if="task.book_time != undefined">预约时间:<span ng-bind="task.book_time| date:'yyyy-MM-dd HH:mm'"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<% block('footer').append('<script src="js/tasks.js"></script>') %>
+<!---启用底部navbar-->
+<% include ../navbar.ejs %>

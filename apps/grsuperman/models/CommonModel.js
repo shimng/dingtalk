@@ -85,4 +85,114 @@ module.exports = {
         });
         return q.promise;
     },
+    getInExpress:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.getInExpress') ;
+        query.invoke({uid:args}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    finishExpress:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.updateMissionAndFlow') ;
+        query.invoke({uid:args.uid,code:args.code,status:9000,action:"FINISH",content:"/"}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    rejectExpress:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.updateMissionAndFlow') ;
+        query.invoke({uid:args.uid,code:args.code,status:9004,action:"REJECT",content:args.dialog}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    bookTime:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.updateMissionAndFlow') ;
+        query.invoke({uid:args.uid,code:args.code,status:6900,action:"BOOK",content:'/',book_time:args.book_time}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    getBackGoods:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.getBackGoods') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    getExchangeGoods:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.getExchangeGoods') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    getFinishedMission:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.hasFinishedList') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    getBookedMission:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.getBookedList') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    getRejectedMission:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.getRejectedList') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    restartExpress:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.updateMissionAndFlow') ;
+        query.invoke({uid:args.uid,code:args.code,status:7000,action:"RESTART",content:'/'}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
 }

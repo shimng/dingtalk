@@ -16,6 +16,7 @@ grApp.controller('HomeCtrl',['$scope','$http','HomeService','toaster',function($
             signature:  signature,
             jsApiList: [
                 'runtime.permission.requestAuthCode',
+                'biz.util.datetimepicker',
                 'biz.util.scan']
         });
         dd.ready(function () {

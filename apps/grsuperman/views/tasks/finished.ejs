@@ -1,0 +1,25 @@
+<% layout("grsuperman_layout") %>
+<div ng-controller="FinishedCtrl" ng-init="load()" >
+
+    <div class="am-panel am-panel-default am-margin-bottom-0">
+        <p class="am-margin-bottom-0">共计：<span ng-bind="summary.count || 0"></span>件；<b class="am-text-danger">提醒:交账请查看收账明细！</b></p>
+    </div>
+    <div ng-show="tasks.length > 0" class="am-panel am-panel-secondary am-margin-sm" ng-repeat="task in tasks track by $index">
+        <div class="am-panel-hd" >
+            <span ng-bind="task.area_name"></span>
+            <span ng-bind="task.type | orderType"></span>
+            <span ng-bind="task.code"></span>
+        </div>
+        <div class="">
+            <div class="am-margin-sm">
+                <p class="am-margin-0">地址:<span ng-bind="task.to_address"></span></p>
+                <p class="am-margin-0">收件人:<span ng-bind="task.to_name"></span><a href="tel:{{task.to_tel}}" ng-bind="task.to_tel"></a> </p>
+                <p class="am-margin-0 am-text-xs ">收款:<span ng-bind="task.pay_way | payway"></span>(<span ng-bind="task.final_amount"></span>)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% block('footer').append('<script src="js/tasks.js"></script>') %>
+<!---启用底部navbar-->
+<% include ../navbar.ejs %>

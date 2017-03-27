@@ -21,32 +21,32 @@
         <div class="am-panel-hd">我的任务</div>
         <div class="am-margin-0">
             <ul class="am-list am-list-static am-list-border am-margin-bottom-0">
-                <li>
+                <li onclick="location='inexpress'">
                     <i class="am-icon-fw am-icon-send-o"></i>
                     <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.inExpress"></span>
                     派送中
                 </li>
-                <li>
+                <li onclick="location='backgoods'">
                     <i class="am-icon-fw am-icon-reply-all"></i>
-                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.finishExpress"></span>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.backGoods"></span>
                     退货
                 </li>
-                <li>
+                <li onclick="location='exchange'">
                     <i class="am-icon-fw am-icon-refresh"></i>
-                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.backGoods"></span>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.changeGoods"></span>
                     换货
                 </li>
-                <li>
+                <li onclick="location='finished'">
                     <i class="am-icon-fw am-icon-check-circle-o"></i>
-                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.changeGoods"></span>
+                    <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.finishExpress"></span>
                     已完成
                 </li>
-                <li>
+                <li onclick="location='booked'">
                     <i class="am-icon-fw am-icon-clock-o"></i>
                     <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.bookTime"></span>
                     预约
                 </li>
-                <li>
+                <li onclick="location='rejected'">
                     <i class="am-icon-fw am-icon-close"></i>
                     <span class="am-badge am-badge-default am-radius" ng-bind="taskHome.reject"></span>
                     拒收
