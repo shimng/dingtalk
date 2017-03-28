@@ -17,7 +17,7 @@ module.exports =  {
         var userInSession = false ;
         var user = '' ;
         ding.getSignature(url).then(function(data){
-            data['agentId'] = config.ding.agentId["sgsuperman"] ;
+            data['agentId'] = config.ding.agentId["grsuperman"] ;
             res.render(_VIEW_PATH+'home', { title: '果然超人',dd_config:data});
         }).catch(function (err) {
             console.log(err)
