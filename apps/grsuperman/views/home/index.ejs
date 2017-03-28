@@ -1,5 +1,5 @@
 <% layout("grsuperman_layout") %>
-<div  ng-controller="HomeCtrl" ng-init="load('<%=dd_config.corpId%>','<%=dd_config.timeStamp%>','<%=dd_config.nonceStr%>','<%=dd_config.signature%>','<%=dd_config.agentId%>','<%= userInSession%>')">
+<div  ng-controller="HomeCtrl" ng-init="load('<%=dd_config.corpId%>','<%=dd_config.timeStamp%>','<%=dd_config.nonceStr%>','<%=dd_config.signature%>','<%=dd_config.agentId%>')">
     <div class="am-panel am-panel-secondary am-margin-sm">
         <div class="am-panel-hd">水果件 {{user.name}}</div>
         <div class="am-panel-bd">
