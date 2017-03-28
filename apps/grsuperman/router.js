@@ -3,6 +3,7 @@
  */
 var homeCtrl = require("./controllers/HomeController");
 var tasksCtrl = require("./controllers/TasksController");
+var pluginsCtrl = require("./controllers/PluginsController");
 module.exports = {
     bind:function(router){
         router.get('/grsuperman/index',homeCtrl.index);
@@ -14,6 +15,8 @@ module.exports = {
         router.get('/grsuperman/finished',tasksCtrl.finished);
         router.get('/grsuperman/booked',tasksCtrl.booked);
         router.get('/grsuperman/rejected',tasksCtrl.rejected);
+        //生态圈
+        router.get('/grsuperman/plugins',pluginsCtrl.plugins);
 
         //ajax
         router.get('/grsuperman/getUserInfoAjax',homeCtrl.getUserInfo);
@@ -31,6 +34,8 @@ module.exports = {
         router.get('/grsuperman/getBookedMissionAjax',homeCtrl.getBookedMission);
         router.get('/grsuperman/getRejectedMissionAjax',homeCtrl.getRejectedMission);
         router.get('/grsuperman/restartExpressAjax',homeCtrl.restartExpress);
+        router.get('/grsuperman/takeOrderAjax',homeCtrl.takeOrder);
+        router.get('/grsuperman/accountNowAjax',homeCtrl.accountNow);
 
 
     }

@@ -195,4 +195,26 @@ module.exports = {
         });
         return q.promise;
     },
+    takeOrder:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.newMission') ;
+        query.invoke({uid:args.uid,orderid:args.orderid,ordertype:args.ordertype}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
+    accountNow:function (args) {
+        var q = Q.defer();
+        var query = new AE.Function('api.logistics.accountNow') ;
+        query.invoke({uid:args.uid}).then(function (data) {
+            console.log(data);
+            q.resolve(data) ;
+        }).catch(function (err) {
+            q.reject(err) ;
+        });
+        return q.promise;
+    },
 }

@@ -1,0 +1,13 @@
+<% layout("sgsuperman_layout") %>
+<div  ng-controller="HomeCtrl"  ng-init="load('<%=dd_config.corpId%>','<%=dd_config.timeStamp%>','<%=dd_config.nonceStr%>','<%=dd_config.signature%>','<%=dd_config.agentId%>')">
+    <div class="am-panel am-panel-secondary am-margin-sm">
+        <div class="am-panel-hd">水果件 </div>
+        <div class="am-panel-bd">
+
+        </div>
+    </div>
+</div>
+
+<% block('footer').append('<script src="js/home.js"></script>') %>
+<!---启用底部navbar-->
+<% include ../navbar.ejs %>

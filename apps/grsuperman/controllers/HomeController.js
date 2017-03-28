@@ -104,107 +104,112 @@ module.exports =  {
         })
     },
     getTaskHome:function (req, res, next) {
-        var user = req.session._user || {};
-        commonModel.getTaskHome(user.uid).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getTaskHome(uid).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getWaitList:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getWaitList(user.uid).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getWaitList(uid).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getInExpress:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getInExpress(user.uid).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getInExpress(uid).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     finishExpress:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.finishExpress({uid:user.uid,code:req.query.code}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.finishExpress({uid:uid,code:req.query.code}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     rejectExpress:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.rejectExpress({uid:user.uid,code:req.query.code,dialog:req.query.dialog}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.rejectExpress({uid:uid,code:req.query.code,dialog:req.query.dialog}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     bookTime:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.bookTime({uid:user.uid,code:req.query.code,book_time:req.query.book_time}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.bookTime({uid:uid,code:req.query.code,book_time:req.query.book_time}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getBackGoods:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getBackGoods({uid:user.uid}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getBackGoods({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getExchangeGoods:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getExchangeGoods({uid:user.uid}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getExchangeGoods({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getFinishedMission:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getFinishedMission({uid:user.uid}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getFinishedMission({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getBookedMission:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getBookedMission({uid:user.uid}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getBookedMission({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     getRejectedMission:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.getRejectedMission({uid:user.uid}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.getRejectedMission({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
         })
     },
     restartExpress:function (req, res, next) {
-        var user = req.session._user || {};
-        console.log(user);
-        commonModel.restartExpress({uid:user.uid,code:req.query.code}).then(function (data) {
+        var uid = req.query.uid || 0;
+        commonModel.restartExpress({uid:uid,code:req.query.code}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    takeOrder:function (req, res, next) {
+        var uid = req.query.uid || 0;
+        commonModel.takeOrder({uid:uid,orderid:req.query.orderid,ordertype:req.query.ordertype}).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        })
+    },
+    accountNow:function (req, res, next) {
+        var uid = req.query.uid || 0;
+        commonModel.accountNow({uid:uid}).then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
